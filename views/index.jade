@@ -1,0 +1,60 @@
+extends layout
+block content
+    h1 #{title}
+    br
+    form(action="/completetask", method="post")
+        table.table.table-striped.table-bordered
+            tr
+                td Nazwa
+                td Kategoria
+                td Data
+                td Zrobione
+            if (typeof tasks === "undefined")
+                tr
+                    td
+            else
+                each task in tasks
+                    tr
+                        td #{task.name}
+                        td #{task.category}
+                        - var date  = new Date(task.date);
+                        - var day   = date.getDate();
+                        - var month = date.getMonth() + 1;
+                        - var year  = date.getFullYear();
+                        td #{month + "/" + day + "/" + year}
+                        td
+                            input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
+        button.btn(type="submit") Aktualizuj zadania
+    h1 Ukończone
+    br
+    form(action="/cleancompleted", method="post")
+        table.table.table-striped.table-bordered
+            tr
+                td Nazwa
+                td Kategoria
+                td Data
+                td Zrobione
+            if (typeof tasksCompleted === "undefined")
+                tr
+                    td
+            else
+                each task in tasksCompleted
+                    tr
+                        td #{task.name}
+                        td #{task.category}
+                        - var date  = new Date(task.date);
+                        - var day   = date.getDate();
+                        - var month = date.getMonth() + 1;
+                        - var year  = date.getFullYear();
+                        td #{month + "/" + day + "/" + year}
+                        td
+                            input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed disabled)
+    hr
+    form.well(action="/addtask", method="post")
+        label Nazwa zadania:
+        input(name="name", type="textbox")
+        label Kategoria zadania:
+        input(name="category", type="textbox")
+        br
+        button.btn(type="submit") Dodaj zadanie
+    div.footer Projekt autorstwa: Marcin Czarkowski & Daniel Kwaśniewski
