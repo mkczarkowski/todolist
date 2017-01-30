@@ -1,12 +1,11 @@
 "use strict";
-var DocumentDBClient = require('documentdb').DocumentClient;
 var async = require('async');
 
-function TaskHistory(taskModel) {
+function TaskController(taskModel) {
     this.taskModel = taskModel;
 }
 
-TaskHistory.prototype = {
+TaskController.prototype = {
     displayTasks: function (request, response) {
         var self = this;
 
@@ -21,7 +20,7 @@ TaskHistory.prototype = {
             var toDo = [];
             var completed = [];
             items.forEach(function(item) {
-               if (item.completed === true) {
+               if (item.completed) {
                    completed.push(item);
                } else {
                    toDo.push(item);
@@ -70,4 +69,4 @@ TaskHistory.prototype = {
 
 };
 
-module.exports = TaskHistory;
+module.exports = TaskController;

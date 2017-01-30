@@ -34,10 +34,10 @@ TaskModel.prototype = {
         });
     },
 
-    find: function (querySpec, callback) {
+    find: function (query, callback) {
         var self = this;
 
-        self.client.queryDocuments(self.collection._self, querySpec).toArray(function (err, results) {
+        self.client.queryDocuments(self.collection._self, query).toArray(function (err, results) {
             if (err) {
                 callback(err);
 
@@ -88,7 +88,7 @@ TaskModel.prototype = {
     getItem: function (itemId, callback) {
         var self = this;
 
-        var querySpec = {
+        var query = {
             query: 'SELECT * FROM root r WHERE r.id = @id',
             parameters: [{
                 name: '@id',
@@ -96,7 +96,7 @@ TaskModel.prototype = {
             }]
         };
 
-        self.client.queryDocuments(self.collection._self, querySpec).toArray(function (err, results) {
+        self.client.queryDocuments(self.collection._self, query).toArray(function (err, results) {
             if (err) {
                 callback(err);
 
