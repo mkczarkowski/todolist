@@ -31,7 +31,6 @@ taskModel.init();
 app.get('/', taskList.displayTasks.bind(taskList));
 app.post('/addtask', taskList.addTask.bind(taskList));
 app.post('/completetask', taskList.completeTask.bind(taskList));
-app.post('/cleancompleted', taskList.deleteTask.bind(taskList));
 app.set('view engine', 'jade');
 
 // skrypt łapiący błąd '404 Not Found' i przekazujący go do obsługi błędów
