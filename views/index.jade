@@ -21,7 +21,7 @@ block content
                         - var day   = date.getDate();
                         - var month = date.getMonth() + 1;
                         - var year  = date.getFullYear();
-                        td #{month + "/" + day + "/" + year}
+                        td #{day + "/" + month + "/" + year}
                         td
                             input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
         button.btn(type="submit") Aktualizuj zadania
@@ -46,7 +46,7 @@ block content
                         - var day   = date.getDate();
                         - var month = date.getMonth() + 1;
                         - var year  = date.getFullYear();
-                        td #{month + "/" + day + "/" + year}
+                        td #{day + "/" + month + "/" + year}
                         td
                             input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed disabled)
     hr

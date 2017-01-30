@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var DocumentDBClient = require('documentdb').DocumentClient;
 var config = require('./config');
-var TaskList = require('./routes/tasklist');
+var TaskList = require('./routes/taskController');
 var TaskModel = require('./models/taskModel');
 
 // ustawienie silnika Jade odpowiadającego za wyświetlanie struktury projektu

@@ -1,6 +1,4 @@
 "use strict";
-var DocumentDBClient = require('documentdb').DocumentClient;
-
 var DocDBUtils = {
     getOrCreateDatabase: function (client, databaseId, callback) {
         var querySpec = {

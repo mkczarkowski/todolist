@@ -10,18 +10,17 @@ TaskHistory.prototype = {
     displayTasks: function (request, response) {
         var self = this;
 
-        var querySpec = {
+        var query = {
             query: 'SELECT * FROM root'
         };
 
-        self.taskModel.find(querySpec, function (err, items) {
+        self.taskModel.find(query, function (err, items) {
             if (err) {
                 throw (err);
             }
             var toDo = [];
             var completed = [];
             items.forEach(function(item) {
-                console.log(item);
                if (item.completed === true) {
                    completed.push(item);
                } else {
@@ -52,7 +51,6 @@ TaskHistory.prototype = {
     completeTask: function (request, response) {
         var self = this;
         var completedTasks = Object.keys(request.body);
-        console.log(Object.keys(request.body));
         async.forEach(completedTasks, function taskIterator(completedTask, callback) {
             self.taskModel.updateItem(completedTask, function (err) {
                 if (err) {
